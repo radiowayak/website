@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>راديو وياك - Radio Wayak</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content="بث مباشر قرآن كريم وبرامج متنوعة" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://radiowayak.org/" />
+    <meta property="og:title" content="راديو وياك - Radio Wayak" />
+    <meta property="og:description" content="بث مباشر قرآن كريم وبرامج متنوعة" />
+    <meta property="og:image" id="og-image" content="https://files.mastodon.social/accounts/avatars/111/737/142/888/099/958/original/510c0030895dd4ed.jpeg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://radiowayak.org/" />
+    <meta property="twitter:title" content="راديو وياك - Radio Wayak" />
+    <meta property="twitter:description" content="بث مباشر قرآن كريم وبرامج متنوعة" />
+    <meta property="twitter:image" id="twitter-image" content="https://files.mastodon.social/accounts/avatars/111/737/142/888/099/958/original/510c0030895dd4ed.jpeg" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --glass-border: rgba(255, 255, 255, 0.12);
+        --glass-highlight: rgba(255, 255, 255, 0.2);
+        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+      }
+
+      body {
+        font-family: 'IBM Plex Sans Arabic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
+        background-color: #000000;
+        color: #f2f2f7; /* iOS Light Text */
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400; /* STRICTLY REGULAR */
+      }
+
+      /* iOS Liquid Glass Effect */
+      .ios-glass, .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px) saturate(180%);
+        -webkit-backdrop-filter: blur(12px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--glass-shadow);
+      }
+      
+      .ios-glass-heavy, .glass-heavy {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .ios-input {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: all 0.3s ease;
+      }
+      .ios-input:focus {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(139, 92, 246, 0.4);
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+      }
+
+      /* Entrance Animations */
+      @keyframes soft-enter {
+        0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .animate-soft-enter {
+        animation: soft-enter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15); 
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.25); 
+      }
+
+      /* Range Slider Customization (iOS Style) */
+      input[type=range] {
+        -webkit-appearance: none;
+        background: transparent;
+      }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        margin-top: -8px;
+        -webkit-appearance: none;
+        transition: transform 0.2s;
+      }
+      input[type=range]:active::-webkit-slider-thumb {
+        transform: scale(1.1);
+      }
+
+      /* 
+         Markdown Styles - ADJUSTED FOR AUTOMATIC SPACING
+      */
+      
+      /* 1. Important Text (White) */
+      .markdown-content strong { 
+        font-weight: 400; /* Regular */
+        color: #ffffff !important; 
+      }
+
+      /* 2. Quranic Verses (Cyan) */
+      .markdown-content em { 
+        font-style: normal; 
+        font-weight: 400; /* Regular */
+        color: #7ff4ff !important; 
+      }
+
+      /* 3. Prophetic Hadiths (Green) */
+      .markdown-content code {
+        font-family: inherit !important; 
+        background-color: transparent !important;
+        padding: 0;
+        border: none;
+        font-weight: 400; /* Regular */
+        white-space: normal !important; 
+        color: #95f095 !important; 
+        font-size: 1em;
+      }
+
+      /* Base spacing and links - Optimized for Automatic Flow */
+      .markdown-content p { 
+        margin: 0;
+        margin-bottom: 1em; /* Proportional to font size */
+        line-height: 1.6;
+      }
+      .markdown-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      .markdown-content ul, .markdown-content ol { padding-right: 1.2rem; margin-bottom: 1em; }
+      .markdown-content a { color: #d8b4fe; text-decoration: underline; }
+      
+      /* Headers also map to Important (White, Regular) */
+      .markdown-content h1, .markdown-content h2, .markdown-content h3 { 
+        font-weight: 400; /* Regular */
+        margin: 0.6rem 0 1rem 0; 
+        color: #ffffff;
+      }
+
+      /* Article Content & Clean Emoji Rendering */
+      .article-content {
+        font-family: 'IBM Plex Sans Arabic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif !important;
+        line-height: 1.8;
+      }
+      .article-content img {
+        display: none !important;
+      }
+      .article-content a {
+        color: #60a5fa !important;
+        text-decoration: underline !important;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <a rel="me" href="https://mastodon.social/@RadioWayak" style="display: none;">Mastodon</a>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "marked": "https://aistudiocdn.com/marked@^14.1.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-dsVyRXoW.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
